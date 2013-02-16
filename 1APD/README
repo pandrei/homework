@@ -1,0 +1,77 @@
+/*
+ * Tema 1 APD - Colonistii
+ * Necula Roxana - Valentina 332CA
+ */
+ 
+ Pentru varianta seriala am calculat mai intai matricele cost si costRes pentru anul 0, conform cerintei.
+ Apoi, pentru fiecare an am refacut matricea de preturi si buget, am actualizat matricea de resurse acolo
+  unde era nevoie, am calculat numarul de colonisti care produc resursa A, pretul maxim al resursei A, 
+  numarul de colonisti care produc resursa B si pretul maxim al resursei B.
+ Dupa aceea, am actualizat matricea de costuri pentru anul curent.
+ 
+ Pentru varianta paralela, am paralelizat calculul matricei de cost si costRes pentru anul 0, 
+ dupa care am paralelizat recalcularea matricei de preturi si buget si recalcularea matricei de costuri pentru noul an.
+
+ Complexitatea teoretica pentru varianta seriala = O(T * n^4), unde T - nr de ani.
+ 
+ Arhiva contine:
+ - Makefile, iar pentru a rula make serial (compileaza varianta seriala), make paralel (compileaza varianta paralela);
+ - README
+ - script2p.sh, scriptul folosit pentru varianta paralela
+ - script2s.sh, scriptul folosit pentru varianta seriala
+ - tema1_paralel.c, codul pentru varianta paralela
+ - tema1_serial.c, codul pentru varianta seriala
+
+Analiza performantelor:
+
+* varianta seriala
+	- N = 50 , 500 iteratii
+		time: 0m58.144s
+	- N = 100, 50 iteratii
+		time: 1m46.418s
+
+ S = G/Tp =def= speed-up (acceleratia)
+ G = timpul de executie al unui algoritm secvential optim
+ Tp( n ) = timpul necesar unui algoritm paralel sa rezolve o problema de dimensiune n
+ 
+ -am testat varianta paralela cu shedule dynamic si static cu chunksize 4 si 10
+
+* varianta paralela
+	schedule = dynamic
+	- N = 50 , 500 iteratii "in50_1.txt"
+		* nr threads: 1 - time: 0m57.744s;	S = 1.00
+		* nr threads: 2 - time: 0m29.100s;	S = 2.06
+		* nr threads: 4 - time: 0m15.166s;	S = 3.83
+		* nr threads: 8 - time: 0m8.331s;	S = 6.97
+
+	- N = 100, 50 iteratii "in100_1.txt"
+		* nr threads: 1 - time: 1m45.591s;	S = 1.00
+		* nr threads: 2 - time: 0m53.005s;	S = 2.00
+		* nr threads: 4 - time: 0m26.558s;	S = 4.00
+		* nr threads: 8 - time: 0m13.900s;	S = 7.65
+		
+	schedule = static, chunksize = 4
+	- N = 50 , 500 iteratii "in50_1.txt"
+		* nr threads: 1 - time: 0m57.942s;	S = 1.00
+		* nr threads: 2 - time: 0m29.257s;	S = 1.98
+		* nr threads: 4 - time: 0m9.118s;	S = 6.37
+		* nr threads: 8 - time: 0m8.331s;	S = 6.97
+
+	- N = 100, 50 iteratii "in100_1.txt"
+		* nr threads: 1 - time: 1m46.079s;	S = 1.00
+		* nr threads: 2 - time: 0m53.271s;	S = 1.99
+		* nr threads: 4 - time: 0m26.789s;	S = 3.97
+		* nr threads: 8 - time: 0m14.261s;	S = 7.46
+		
+		schedule = static, chunksize = 10
+	- N = 50 , 500 iteratii "in50_1.txt"
+		* nr threads: 1 - time: 1m9.214s;	S = 0.84
+		* nr threads: 2 - time: 0m29.248s;	S = 1.98
+		* nr threads: 4 - time: 0m15.523s;	S = 3.74
+		* nr threads: 8 - time: 0m9.244s;	S = 6.28
+
+	- N = 100, 50 iteratii "in100_1.txt"
+		* nr threads: 1 - time: 1m46.051s;	S = 1.00
+		* nr threads: 2 - time: 0m53.317s;	S = 1.99
+		* nr threads: 4 - time: 0m26.801s;	S = 3.97
+		* nr threads: 8 - time: 0m14.219s;	S = 7.48
