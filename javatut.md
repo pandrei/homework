@@ -44,7 +44,7 @@ Aloca memorie pentru el si eventual ii seteaza unele variabile.
 ###Obiecte
 Un obiect este materializarea unei clase. Sintaxa pentru a crea un obiect este:
 nume_clasa nume_obiect = new nume_clasa();
-
+```
 class strada {
     public String nume;
     public strada() {
@@ -61,7 +61,7 @@ public class Main {
         strada b = new strada("Exemplu"); //constructor cu parametri.
     }
 }
-
+```
 
 ## Principii importante
 
