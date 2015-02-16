@@ -269,10 +269,40 @@ Variables declared in a Java interface is by default final. An abstract class ma
 
 * __Doua__ sunt importante si trebuie sa le retii. O clasa poate implementa(keyword-ul e __implements__ la interfete, si __extends__ la clase) __oricate__ interfete, dar extinde __o singura__ clasa.
 
-* O interfata __Nu__ contine cod.  O clasa (abstracta) poate sa aiba unele metode implementate si altele nu. O clasa non-abstracta trebuie sa aiba toate metodele implementate. O interfata __nu are nicio metoda implementata__.
+* O interfata __Nu__ contine cod(prin cod ma refer la implementarea metodelor, contine doar numele lor, declararea metodelor).  O clasa (abstracta) poate sa aiba unele metode implementate si altele nu. O clasa non-abstracta trebuie sa aiba toate metodele implementate. O interfata __nu are nicio metoda implementata__.
 
 
 ### Modificatori de acces si keywords.
 Campurile unei clase pot avea modificatorii de acces urmatori: public, private, protected
 
 [permisiuni modificatori de acces java] (http://2.bp.blogspot.com/-fHg6rAWuvUg/UMJQryYKGuI/AAAAAAAAAWk/jnVaxjcg_1k/s1600/table-of-Member-level-access-modifiers.png)
+
+#Exercitiu
+
+* Extindzand clasa asta abstracta, scrie clase pentru sfera si patrat. Aria va trebui sa fie ok, si va trebui
+sa adaugi orice campuri crezi tu ca sunt necesare pentru a o putea calcula.
+Pe langa asta, va trebui sa folosesti super in noul constructor, insa numele va trebui sa fie potrivit obiectului.
+(pentru un cerc, "this is a circle");
+
+```
+public abstract class geometricShape {
+   private float area;
+   private String name;
+   // declare nonabstract methods
+   public geometricShape() {
+   	this.area = 0;
+   	this.name = "This is a generic shape!"
+   };
+   abstract float  getArea();
+   abstract String getName();
+
+}
+```
+
+* Acelasi lucru ca mai sus, tot pentru sfera si patrat, insa implementand interfata geometricShape, de data asta. Observa ca nu exista nicio variabila(desi poate sa existe!), ce faci?
+```
+public interface geometricShape {
+	public float getArea();
+	public String getName();
+}
+```
