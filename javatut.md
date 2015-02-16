@@ -126,6 +126,29 @@ arbitrar.
 
 > Ca best practice, vrei, de cate ori se poate, sa ascunzi implementarea, sa oferi o functionalitate fara sa expui ce se intampla, de fapt, in spate.
 
+> Cel mai des intalnit approach in encapsulare sunt metodele get/set, de exemplu:
+
+```
+class example {
+	private int field1;
+	protected int field2;
+	
+	public int getField1(){
+		return this.field1;
+	};
+	public void setField1(int a){
+		this.field1 = a;
+	}
+	
+	public int getField2(){
+		return this.field2;
+	};
+	public void setField2(int b){
+		this.field2 = b;
+	}
+}
+```
+
 #Exercitiu
 Implementeaza clasa numar complex, care sa aiba campurile parte reala si parte imaginara. Scrie constructorii pentru ele, metodele de get si set, metode de adunare si inmultire.  Apoi o clasa numita Main, care sa contina metoda public static void main si care sa creeze doua obiecte numarComplex pe care sa le adune si inmulteasca.
 
