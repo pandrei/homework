@@ -96,7 +96,9 @@ public class operatorCinema {
 }
 ```
 
-Asa ca vom folosi encapsulare!
+>Asa ca vom folosi encapsulare! Pentru a izola campurile clasei de acces din alta parte vom folosi private
+>(campurile nu pot fi accesate decat din interiorul clasei) sau protected(campurile nu pot fi accesate decat din
+>interiorul clasei, sau de clasele care o extind)
 
 salaCinema devine:
 ```
